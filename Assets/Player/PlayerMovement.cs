@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -12,6 +13,15 @@ public class PlayerMovement : MonoBehaviour
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
+    bool characterMoving = false;
+
+    private Animator anim;
+
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -19,9 +29,31 @@ public class PlayerMovement : MonoBehaviour
 
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
+        if (controller.playerJumping == false)
+        {
+            anim.SetBool("isJumping", true);
+        } else if (controller.playerJumping == true)
+        {
+            anim.SetBool("isJumping", false);
+        }
+
+
+        if (Input.GetButtonDown("Horizontal"))
+        {
+            characterMoving = true;
+        }
+
+        if (Input.GetButtonUp("Horizontal"))
+        {
+            characterMoving = false;
+        }
+
+        MovingAnimCheck();
+
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
+            anim.SetTrigger("takeOff");
         }
 
         if (Input.GetButtonDown("Crouch"))
@@ -33,6 +65,13 @@ public class PlayerMovement : MonoBehaviour
             crouch = false;
         }
 
+
+
+        //exit button
+        if (Input.GetKeyDown("escape"))
+        {
+            Application.Quit();
+        }
     }
 
     void FixedUpdate()
@@ -40,5 +79,16 @@ public class PlayerMovement : MonoBehaviour
         // Move our character
         controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
         jump = false;
+    }
+
+    void MovingAnimCheck()
+    {
+        if(characterMoving == true)
+        {
+            anim.SetBool("isRunning", true);
+        } else if(characterMoving == false)
+        {
+            anim.SetBool("isRunning", false);
+        }
     }
 }
