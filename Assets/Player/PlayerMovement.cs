@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
