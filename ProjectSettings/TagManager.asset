@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - WorldCenter
   layers:
   - Default
   - TransparentFX
@@ -12,7 +13,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - PostProcessing
   - 
   - 
   - 
@@ -38,6 +39,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Backdrop
+    uniqueID: 959100905
+    locked: 0
+  - name: Trees
+    uniqueID: 3144954143
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: PlayerSorting
+    uniqueID: 3326722871
+    locked: 0
+  - name: Foreground
+    uniqueID: 3871440169
+    locked: 0
+  - name: UI
+    uniqueID: 2027337261
     locked: 0

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -17,15 +18,23 @@ public class PlayerMovement : MonoBehaviour
 
     private Animator anim;
 
+    public Vector2 playerPosition;
+
+    public VisualEffect vfxRenderer;
+
 
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
+        
+        playerPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        playerPosition = transform.position;
 
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
@@ -65,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
             crouch = false;
         }
 
+        vfxRenderer.SetVector3("ColliderPos", transform.position);
 
 
         //exit button
