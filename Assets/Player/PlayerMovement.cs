@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = false;
+
         anim = GetComponentInChildren<Animator>();
         
         playerPosition = transform.position;

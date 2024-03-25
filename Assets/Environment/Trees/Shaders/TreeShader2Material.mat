@@ -55,7 +55,7 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     - _Hue: 1
-    - _PlayerOffsetX: -8.585897
+    - _PlayerOffsetX: -12.146837
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Saturation: 1
